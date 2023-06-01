@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ProyMVC_Productos.Models.Productos>
+
+@{
+    // bloque de codigo razor
+    ViewData["Title"] = "IndexProductos";
+
+    // definir una variable entera para la cantidad de
+    // elementos de los datos del modelo enviado "Model"
+    int contador = Model.Count();
+}
+
+<h1>IndexProductos</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.cod_prod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nom_prod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pre_prod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stk_prod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha_cad)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.cod_prod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nom_prod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pre_prod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stk_prod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_cad)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<br/>
+<div>
+    <p>
+        Cantidad 1: @ViewBag.CANTIDAD
+    </p>
+    <p>
+        Cantidad 2: @ViewBag.cantidad
+    </p>
+    <p>
+        Cantidad 3: @contador
+    </p>
+</div>
+
